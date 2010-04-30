@@ -5,7 +5,7 @@ HOMEPAGE = "http://www.gzip.org/zlib/"
 LICENSE = "zlib"
 PR="r2"
 
-SRC_URI = "http://www.ares.gizmoforyou-projects.com/code/OE/packages/org.openembedded.snapshot/packages/zlib/zlib-1.2.3.tar.bz2 \
+SRC_URI = "http://ares.gizmoforyou-projects.com/code/OE/packages/org.openembedded.snapshot/packages/zlib/zlib-1.2.3.tar.bz2 \
 		file://visibility.patch;patch=1 \
 		file://autotools.patch;patch=1 "
 
