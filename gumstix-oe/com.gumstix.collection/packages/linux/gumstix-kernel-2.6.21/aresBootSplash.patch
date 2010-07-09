@@ -1,0 +1,30 @@
+diff -rupN linux-2.6.21-orig/drivers/video/console/fbcon.c linux-2.6.21/drivers/video/console/fbcon.c
+--- linux-2.6.21-orig/drivers/video/console/fbcon.c	2010-07-09 10:37:57.845138979 -0700
++++ linux-2.6.21/drivers/video/console/fbcon.c	2010-07-09 10:40:30.635128694 -0700
+@@ -591,8 +591,7 @@ static void fbcon_prepare_logo(struct vc
+ 	if (fb_get_color_depth(&info->var, &info->fix) == 1)
+ 		erase &= ~0x400;
+ 	logo_height = fb_prepare_logo(info, ops->rotate);
+-	logo_lines = (logo_height + vc->vc_font.height - 1) /
+-		vc->vc_font.height;
++	logo_lines = (logo_height + vc->vc_font.height - 1) / vc->vc_font.height;
+ 	q = (unsigned short *) (vc->vc_origin +
+ 				vc->vc_size_row * rows);
+ 	step = logo_lines * cols;
+@@ -640,13 +639,14 @@ static void fbcon_prepare_logo(struct vc
+ 		vc->vc_pos += logo_lines * vc->vc_size_row;
+ 		kfree(save);
+ 	}
+-
+-	if (logo_lines > vc->vc_bottom) {
++	if (logo_height > info->var.yres) {
+ 		logo_shown = FBCON_LOGO_CANSHOW;
+ 		printk(KERN_INFO
+ 		       "fbcon_init: disable boot-logo (boot-logo bigger than screen).\n");
+ 	} else if (logo_shown != FBCON_LOGO_DONTSHOW) {
+ 		logo_shown = FBCON_LOGO_DRAW;
++		/* because some screen heights don't 'cleanly' divide into rows */
++		if ( logo_lines > vc->vc_bottom ) logo_lines = vc->vc_bottom;
+ 		vc->vc_top = logo_lines;
+ 	}
+ }
