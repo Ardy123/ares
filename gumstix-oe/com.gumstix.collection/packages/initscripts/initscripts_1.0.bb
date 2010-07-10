@@ -15,7 +15,7 @@ SRC_URI = "file://functions \
            file://devpts \
            file://hostname.sh \
            file://mountall.sh \
-           file://banner \
+#           file://banner \
            file://finish \
            file://bootmisc.sh \
            file://mountnfs.sh \
@@ -80,7 +80,7 @@ do_install () {
 #
 # Install device dependent scripts
 #
-	install -m 0755 ${WORKDIR}/banner	${D}${sysconfdir}/init.d/banner
+#	install -m 0755 ${WORKDIR}/banner	${D}${sysconfdir}/init.d/banner
 	install -m 0755 ${WORKDIR}/devices	${D}${sysconfdir}/init.d/devices
 	install -m 0755 ${WORKDIR}/umountfs	${D}${sysconfdir}/init.d/umountfs
 #
@@ -105,7 +105,7 @@ do_install () {
 	ln -sf		../init.d/halt		${D}${sysconfdir}/rc0.d/S90halt
 	ln -sf		../init.d/save-rtc.sh	${D}${sysconfdir}/rc0.d/S25save-rtc.sh
 	ln -sf		../init.d/save-rtc.sh	${D}${sysconfdir}/rc6.d/S25save-rtc.sh
-	ln -sf		../init.d/banner	${D}${sysconfdir}/rcS.d/S02banner
+#	ln -sf		../init.d/banner	${D}${sysconfdir}/rcS.d/S02banner
 	ln -sf		../init.d/checkroot.sh	${D}${sysconfdir}/rcS.d/S10checkroot.sh
 #	ln -sf		../init.d/checkfs.sh	${D}${sysconfdir}/rcS.d/S30checkfs.sh
 	ln -sf		../init.d/mountall.sh	${D}${sysconfdir}/rcS.d/S35mountall.sh

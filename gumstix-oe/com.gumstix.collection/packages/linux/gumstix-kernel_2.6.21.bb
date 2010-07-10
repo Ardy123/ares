@@ -48,6 +48,8 @@ SRC_URI = "${KERNELORG_MIRROR}/pub/linux/kernel/v2.6/linux-${PV}.tar.bz2 \
        file://smc911x-fixup.patch;patch=1 \
        file://smc91x-fail-if-no-chip.patch;patch=1 \
        file://one-wire.patch;patch=1 \
+       file://aresBootSplashImg.patch;patch=1 \
+	   file://aresBootSplash.patch;patch=1 \
 	   http://ares.gizmoforyou-projects.com/code/OE/packages/com.gumstix.collection/packages/linux/gumstix-kernel-2.6.21/linux-2.6.21.patch;patch=1 \
        ${@base_contains('MACHINE_FEATURES', 'rgb16','file://pxafb-backto16.patch;patch=1', '',d)} \
        "
