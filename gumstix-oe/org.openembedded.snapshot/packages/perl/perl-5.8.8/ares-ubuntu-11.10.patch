@@ -1,0 +1,13 @@
+--- perl-5.8.8/Configure	2011-10-20 14:37:18.700841295 -0700
++++ perl-5.8.8/Configure	2011-10-20 14:40:03.304833951 -0700
+@@ -1263,6 +1263,10 @@ glibpth="/lib /usr/lib /lib64 /usr/lib64
+ glibpth="$glibpth /usr/ccs/lib /usr/ucblib /usr/local/lib"
+ test -f /usr/shlib/libc.so && glibpth="/usr/shlib $glibpth"
+ test -f /shlib/libc.so     && glibpth="/shlib $glibpth"
++test -d /usr/lib64         && glibpth="$glibpth /lib64 /usr/lib64 /usr/local/lib64"
++test -f /usr/lib/i386-linux-gnu/libc.so && glibpth="/usr/lib/i386-linux-gnu $glibpth"
++test -f /usr/lib/x86_64-linux-gnu/libc.so && glibpth="/usr/lib/x86_64-linux-gnu $glibpth"
++
+ 
+ : Private path used by Configure to find libraries.  Its value
+ : is prepended to libpth. This variable takes care of special
