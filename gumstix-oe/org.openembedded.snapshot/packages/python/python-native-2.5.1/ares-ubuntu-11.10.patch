@@ -1,0 +1,10 @@
+--- Python-2.5.1/setup.py	2011-10-20 22:33:09.277635783 -0700
++++ Python-2.5.1/setup.py	2011-10-20 22:35:08.385635676 -0700
+@@ -296,6 +296,7 @@ class PyBuildExt(build_ext):
+         lib_dirs = self.compiler.library_dirs + [
+             '/lib64', '/usr/lib64',
+             '/lib', '/usr/lib',
++            '/x86_64-linux-gnu', '/usr/lib/x86_64-linux-gnu'
+             ]
+         inc_dirs = self.compiler.include_dirs + ['/usr/include']
+         exts = []
